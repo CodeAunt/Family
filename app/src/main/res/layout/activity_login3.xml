@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".login.Login3">
+
+    <ImageView
+        android:id="@+id/login3_img_back"
+        android:layout_width="12dp"
+        android:layout_height="21dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginLeft="24dp"
+        android:src="@mipmap/login_nav_back"/>
+
+    <ImageView
+        android:id="@+id/login3_img_upload"
+        android:layout_gravity="center"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="140dp"
+        android:src="@mipmap/login_btn_upload"/>
+
+    <LinearLayout
+        android:gravity="center"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp">
+
+        <EditText
+            android:id="@+id/login3_edt_username"
+            android:layout_width="272dp"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:gravity="center"
+            android:hint="请输入您的小圈圈名"
+            android:maxLength="11"
+            android:singleLine="true"
+            android:textColor="#000000"
+            android:textCursorDrawable="@xml/cursor"
+            android:textSize="20sp" />
+       <RelativeLayout
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content">
+           <LinearLayout
+               android:id="@+id/login3_layout_underline"
+               android:orientation="horizontal"
+               android:layout_width="272dp"
+               android:layout_height="1dp"
+               android:layout_marginTop="12dp"
+               android:layout_centerHorizontal="true"
+               android:background="#0bb399">
+           </LinearLayout>
+           <TextView
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_marginTop="8dp"
+               android:layout_below="@+id/login3_layout_underline"
+               android:layout_alignLeft="@id/login3_layout_underline"
+               android:gravity="left"
+               android:textSize="12sp"
+               android:textColor="#aaaaaa"
+               android:text="为方便亲友辨认，建议输入真实姓名哦"/>
+       </RelativeLayout>
+
+        <Button
+            android:id="@+id/login3_btn_nextstep"
+            android:layout_width="272dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/corner_grey"
+            android:textSize="16sp"
+            android:textColor="#7c7c7c"
+            android:gravity="center"
+            android:text="下一步"/>
+    </LinearLayout>
+
+
+
+</LinearLayout>

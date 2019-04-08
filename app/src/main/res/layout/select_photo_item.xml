@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/iv_content"
+            android:layout_width="115dp"
+            android:layout_height="115dp"
+            android:padding="1dp"
+            android:scaleType="centerCrop"/>
+            <!--app:srcCompat="@color/divider" -->
+
+        <ImageView
+            android:id="@+id/iv_select_state"
+            android:layout_width="21dp"
+            android:layout_height="21dp"
+            android:layout_alignTop="@+id/iv_content"
+            android:layout_alignEnd="@+id/iv_content"
+            android:layout_marginTop="6dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginRight="8dp"
+            app:srcCompat="@drawable/photo_btn_nor" />
+    </RelativeLayout>
+
+</FrameLayout>

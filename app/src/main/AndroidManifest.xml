@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="family.momo.com.family">
+
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.WRITEAL_STORAGE" />
+    <uses-permission android:name="android.permission.RECEIVE_SMS" />
+    <uses-permission android:name="android.permission.READ_SMS" />
+    <uses-permission android:name="android.permission.GET_TASKS" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <!-- 这个权限用于访问GPS定位 -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <!-- 这个权限用于获取wifi的获取权限，wifi信息会用来进行网络定位 -->
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <!-- SD卡读取权限，用户写入离线定位数据 -->
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <!-- 媒体权限 -->
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.CAMERA" />
+
+    hlUs6UzMxTVhapXRPZ1ldDhTff75OZ2E
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/logo"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        android:networkSecurityConfig="@xml/network_security_config"
+        android:name="family.momo.com.family.chat.HsiaoTienApplication">
+        <meta-data
+            android:name="com.baidu.lbsapi.API_KEY"
+            android:value="hlUs6UzMxTVhapXRPZ1ldDhTff75OZ2E">
+        </meta-data>
+
+        <service
+            android:name="com.baidu.location.f"
+            android:enabled="true"
+            android:process=":remote" />
+        <activity
+            android:name=".MainActivity"
+            android:screenOrientation="portrait">
+           <intent-filter>
+
+               <action android:name="android.intent.action.SEND" />
+           </intent-filter>
+        </activity>
+        <activity
+            android:name="album.AlbumActivity"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar">
+            <!--<intent-filter>-->
+                <!--<action android:name="android.intent.action.MAIN" />-->
+
+                <!--<category android:name="android.intent.category.LAUNCHER" />-->
+            <!--</intent-filter>-->
+        </activity>
+        <activity android:name=".album.SelectPhotoActivity" />
+        <activity
+            android:name=".chat.Chat_msg"
+            android:windowSoftInputMode="adjustResize"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.mob.tools.MobUIShell"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"
+            android:windowSoftInputMode="stateHidden|adjustResize" />
+
+        <service
+            android:name=".GetMsgService"
+            android:enabled="true"
+            android:exported="true" />
+
+        <activity android:name=".login.Login" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".login.Login2" />
+        <activity android:name=".login.Login3" />
+        <activity
+            android:name=".login.Login4"
+            android:windowSoftInputMode="stateVisible|adjustResize" />
+        <activity android:name=".login.Login5" />
+        <activity android:name=".information.Infomation_mycircle" />
+        <activity android:name=".information.Infomation_newcircle" />
+        <activity
+            android:name=".information.Infomation_joincircle"
+            android:windowSoftInputMode="stateVisible|adjustResize" />
+        <activity android:name=".information.Infomation_sharecircle" />
+        <activity android:name=".information.Infomation_invitecircle" />
+        <activity android:name=".information.Infomation_fedback" />
+        <activity android:name=".information.Infomation_sharecircle_share" />
+        <activity android:name=".chat.Chat_msg_members" />
+        <activity android:name=".chat.Chat_msg_members_users"/>
+
+        <activity android:name=".chat.ChannelActivity"/>
+        <activity android:name=".chat.PartyRoomActivity"/>
+    </application>
+
+</manifest>

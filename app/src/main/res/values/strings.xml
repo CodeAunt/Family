@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">Family</string>
+    <string name="title_activity_login2">Login2</string>
+    <string name="title_activity_main2">Main2Activity</string>
+    <drawable name="clr_normal">#ffffff</drawable>
+    <drawable name="clr_pressed_grey">#e8e8e8</drawable>
+    <drawable name="clr_pressed_littlegreen">#e4f2ef</drawable>
+
+    <string name="storage_photo">手机相册</string>
+    <string name="preview">预览</string>
+    <string name="famil_title">你的小屋</string>
+    <string name="upload">上传</string>
+    <string name="select_photo">选择照片</string>
+    <string name="innerAlbum">手机相册</string>
+    <string name="all_image">所有照片</string>
+    <string name="begin">点击右下角“+”号\n给回忆一个温暖的家</string>
+
+
+    <string name="agora_app_id">7fb791bf0d4c471285f5c9a94f8009a2</string>
+
+</resources>

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".login.Login">
+    <LinearLayout
+        android:id="@+id/login_layout1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_alignLeft="@+id/login_layout2">
+        <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="104dp"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:textStyle="bold"
+        android:textSize="36sp"
+        android:textColor="#000000"
+        android:gravity="left"
+        android:text="Hi"/>
+        <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:textStyle="bold"
+        android:textSize="24sp"
+        android:textColor="#000000"
+        android:gravity="left"
+        android:text="欢迎使用小圈圈"/>
+        <ImageView
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:layout_marginTop="16dp"
+        android:src="@mipmap/login_logo2"/>
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/login_layout2"
+        android:layout_width="272dp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:layout_below="@+id/login_layout1">
+        <EditText
+            android:id="@+id/login_edt_phone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="42dp"
+            android:textSize="16sp"
+            android:maxLength="11"
+            android:textColor="#7c7c7c"
+            android:inputType="phone"
+            android:singleLine="true"
+            android:gravity="center"
+            android:theme="@style/MyEditText"
+            android:hint="请输入手机号码"/>
+
+        <Button
+            android:id="@+id/login_btn_nextstep"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:background="@drawable/corner_grey"
+            android:textSize="16sp"
+            android:textColor="#7c7c7c"
+            android:gravity="center"
+            android:text="下一步"/>
+    </LinearLayout>
+
+
+
+</RelativeLayout>

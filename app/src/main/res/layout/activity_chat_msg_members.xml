@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".chat.Chat_msg_members">
+
+    <!-- 导航栏 -->
+    <LinearLayout
+        android:id="@+id/chat_msg_members_layout_actionbar"
+        android:orientation="vertical"
+        android:background="@xml/themecolor"
+        android:layout_width="match_parent"
+        android:layout_height="68dp">
+        <!--状态栏留白-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="20dp">
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="48dp">
+
+            <!-- 右边总布局.》》导航栏 》》头像-->
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical">
+                <ImageView
+                    android:id="@+id/chat_msg_members_actionbar_img_back"
+                    android:layout_width="44dp"
+                    android:layout_height="44dp"
+                    android:src="@mipmap/login_btn_back"/>
+
+            </LinearLayout>
+
+            <!-- 右边总布局.》》导航栏 》》标题-->
+            <LinearLayout
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:textColor="#ffffff"
+                    android:textSize="20sp"
+                    android:gravity="center"
+                    android:text="我的小圈圈"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+            </LinearLayout>
+            <!-- 右边总布局.》》导航栏》》右块 -->
+            <LinearLayout
+                android:gravity="center"
+                android:orientation="vertical"
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+            </LinearLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/chat_msg_members_layout_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/chat_msg_members_layout_actionbar"
+        android:layout_marginTop="16dp">
+        <ListView
+            android:id="@+id/chat_msg_members_listview_groups"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        </ListView>
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/chat_msg_members_layout1"
+        android:orientation="vertical"
+        android:layout_below="@id/chat_msg_members_layout_list"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#bcdcbb"></LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/chat_msg_members_layout_invite"
+        android:orientation="vertical"
+        android:layout_below="@+id/chat_msg_members_layout1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:id="@+id/chat_msg_members_style_layout_invite"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:orientation="horizontal">
+            <LinearLayout
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="16dp"
+                android:gravity="center">
+
+                <ImageView
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
+                    android:src="@mipmap/user_icon_4"/>
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/chat_msg_members_style_txt_name"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="27dp"
+                android:gravity="center|left"
+                android:textColor="#20aa92"
+                android:text="邀请新成员"
+                android:textSize="18sp" />
+
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/chat_msg_members_layout2"
+        android:orientation="vertical"
+        android:layout_below="@+id/chat_msg_members_layout_invite"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#bcdcbb"></LinearLayout>
+    <TextView
+        android:id="@+id/chat_msg_members_txt_total"
+        android:gravity="center"
+        android:layout_below="@+id/chat_msg_members_layout2"
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:textColor="#999999"
+        android:text="该小圈圈共4个亲友"/>
+</RelativeLayout>

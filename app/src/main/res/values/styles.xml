@@ -1,0 +1,53 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+    <!--colorControlNormal 为没有获取焦点时候下划线的颜色-->
+    <!--colorControlActivated 为获取焦点时候光标与下划线的颜色-->
+    <style name="MyEditText" parent="Theme.AppCompat.Light">
+        <item name="colorControlNormal">#e8e8e8</item>
+        <item name="colorControlActivated">#0bb399</item>
+    </style>
+
+    <declare-styleable name="XCRoundRectImageView">
+
+        <attr name="radius" format="integer"></attr>
+
+    </declare-styleable>
+    <declare-styleable name="PasswordInputView">
+        <attr name="borderWidth" format="dimension"></attr>
+        <attr name="borderColor" format="color"></attr>
+        <attr name="borderRadius" format="dimension"></attr>
+        <attr name="passwordLength" format="integer"></attr>
+        <attr name="borderDistance" format="dimension"></attr>
+        <attr name="passwordSize" format="dimension"></attr>
+        <attr name="passwordColor" format="color"></attr>
+        <attr name="passwordRadius" format="dimension"></attr>
+    </declare-styleable>
+    <declare-styleable name="vericationCodeInput">
+
+        <attr name="box" format="integer" />
+        <attr name="child_h_padding" format="dimension"/>
+        <attr name="child_v_padding" format="dimension"/>
+        <attr name="child_width" format="dimension"/>
+        <attr name="child_height" format="dimension"/>
+        <attr name="padding" format="dimension"/>
+        <attr name="box_bg_focus" format="reference"/>
+        <attr name="box_bg_normal" format="reference"/>
+        <attr name="inputType" format="string"/>
+    </declare-styleable>
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+</resources>

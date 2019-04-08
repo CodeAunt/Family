@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#eef0f0">
+
+    <ImageView
+        android:layout_width="152dp"
+        android:layout_height="176dp"
+        android:layout_marginTop="120dp"
+        android:layout_gravity="center"
+        android:src="@mipmap/smarthome_bg_blankpage"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:textSize="15sp"
+        android:textColor="#8f8f8f"
+        android:text="功能未上线，敬请期待"
+        android:gravity="center"/>
+
+</LinearLayout>
