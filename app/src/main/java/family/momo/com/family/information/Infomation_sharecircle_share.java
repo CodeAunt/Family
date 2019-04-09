@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import family.momo.com.family.MainActivity;
 import family.momo.com.family.R;
+import family.momo.com.family.util.VariableDataUtil;
 
 public class Infomation_sharecircle_share extends AppCompatActivity {
 
@@ -58,7 +59,7 @@ public class Infomation_sharecircle_share extends AppCompatActivity {
                 Intent intent = new Intent(Intent.ACTION_SEND);
                 intent.setType("text/plain");
                 intent.putExtra(Intent.EXTRA_SUBJECT, "分享邀请码111");
-                intent.putExtra(Intent.EXTRA_TEXT, "分享邀请码222");//extraText为文本的内容
+                intent.putExtra(Intent.EXTRA_TEXT, "分享邀请码"+VariableDataUtil.groupcode);//extraText为文本的内容
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);//为Activity新建一个任务栈
                 startActivity(Intent.createChooser(intent, "分享邀请码333"));//R.string.action_share同样是标题
             }

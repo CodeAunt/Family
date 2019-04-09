@@ -9,7 +9,6 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.Map;
 
 public class sendPostUtil {
     /**
@@ -97,7 +96,7 @@ public class sendPostUtil {
         JSONObject jsonObject = new JSONObject();
         try {
             jsonObject.put("groupname",groupname);
-            postRequest(VariableDataUtil.requestAdress+"consumer/getgroupmember",jsonObject.toString(),"utf-8",onResponseListner);
+            postRequest(VariableDataUtil.requestAddress +"consumer/getgroupmember",jsonObject.toString(),"utf-8",onResponseListner);
 
         } catch (JSONException e) {
             e.printStackTrace();
@@ -107,7 +106,7 @@ public class sendPostUtil {
         JSONObject jsonObject = new JSONObject();
         try {
             jsonObject.put("groupname",groupcode);
-            postRequest(VariableDataUtil.requestAdress+"consumer/getgroups",jsonObject.toString(),"utf-8",onResponseListner);
+            postRequest(VariableDataUtil.requestAddress +"consumer/getgroups",jsonObject.toString(),"utf-8",onResponseListner);
 
         } catch (JSONException e) {
             e.printStackTrace();
@@ -117,7 +116,7 @@ public class sendPostUtil {
         JSONObject jsonObject = new JSONObject();
         try {
             jsonObject.put("groupname",groupname);
-            postRequest(VariableDataUtil.requestAdress+"consumer/getgroupcode",jsonObject.toString(),"utf-8",onResponseListner);
+            postRequest(VariableDataUtil.requestAddress +"consumer/getgroupcode",jsonObject.toString(),"utf-8",onResponseListner);
 
         } catch (JSONException e) {
             e.printStackTrace();

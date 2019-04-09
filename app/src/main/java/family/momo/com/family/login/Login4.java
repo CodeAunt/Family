@@ -12,7 +12,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -118,7 +117,7 @@ public class Login4 extends AppCompatActivity {
     }
     private void post(){
 
-        sendPostUtil.postRequest(VariableDataUtil.requestAdress+"/consumer/join",json,"utf-8", new sendPostUtil.OnResponseListner() {
+        sendPostUtil.postRequest(VariableDataUtil.requestAddress +"/consumer/join",json,"utf-8", new sendPostUtil.OnResponseListner() {
             @Override
             public void onSucess(String response) {
                 Message message = new Message();
@@ -137,7 +136,8 @@ public class Login4 extends AppCompatActivity {
     Handler handler = new Handler(){
         @Override
         public void handleMessage(Message msg) {
-            Toast.makeText(Login4.this,msg.toString(),Toast.LENGTH_LONG).show();
+            VariableDataUtil.groupcode = invitecode;
+//            Toast.makeText(Login4.this,msg.toString(),Toast.LENGTH_LONG).show();
             if (msg.obj != null){
                 Intent intent = new Intent(Login4.this,MainActivity.class);
                 intent.putExtra("phone",phone);

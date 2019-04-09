@@ -1,13 +1,10 @@
 package family.momo.com.family.information;
 
-import android.content.ContentValues;
 import android.content.Intent;
-import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Handler;
 import android.os.Message;
-import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
@@ -21,12 +18,8 @@ import android.widget.Toast;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import family.momo.com.family.Database.Bean_User_Info;
-import family.momo.com.family.Database.Helper_User_Info;
-import family.momo.com.family.Database.Util;
 import family.momo.com.family.MainActivity;
 import family.momo.com.family.R;
-import family.momo.com.family.login.Login5;
 import family.momo.com.family.util.VariableDataUtil;
 import family.momo.com.family.util.sendPostUtil;
 
@@ -119,7 +112,7 @@ public class Infomation_newcircle extends AppCompatActivity {
     public void post(String json){
         String encode="utf-8";
 
-        sendPostUtil.postRequest(VariableDataUtil.requestAdress+"/consumer/create", json,encode, new sendPostUtil.OnResponseListner() {
+        sendPostUtil.postRequest(VariableDataUtil.requestAddress +"/consumer/create", json,encode, new sendPostUtil.OnResponseListner() {
             @Override
             public void onSucess(String response) {
                 Message message = new Message();

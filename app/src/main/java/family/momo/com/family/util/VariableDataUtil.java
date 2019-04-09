@@ -4,7 +4,7 @@ public class VariableDataUtil {
     public static String Code_Filter_From_Android_Service = "family.momo.com.family.MSG_FROM_SERVICE";//来自Service（GetMsgService）的广播码
     public static String Code_Filter_From_Android_Activity ="family.momo.com.family.MSG_FROM_USER";//来自Activity（Chat,Chat_msg）的广播码
     public static String netAddress = "ws://missmo.oicp.io/websocket/";//服务器地址
-    public static String requestAdress = "http://missmo.oicp.io";
+    public static String requestAddress = "http://39.106.217.109:8080";
     public static String fedBackUrl = "https://support.qq.com/product/57194";
 
     public static String MYID = "mother";//标明自己身份

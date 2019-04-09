@@ -1,6 +1,8 @@
 package family.momo.com.family.util;
 
+import android.content.Context;
 import android.util.Log;
+import android.widget.Toast;
 
 import java.io.DataOutputStream;
 import java.io.File;
@@ -10,6 +12,10 @@ import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.UUID;
+
+import family.momo.com.family.album.SelectPhotoActivity;
+
+import static com.mob.MobSDK.getContext;
 
 public class UploadUtil {
 //    private static final String TAG = "uploadFile";
@@ -225,7 +231,16 @@ public class UploadUtil {
                 sb.append(LINE_END);
                 dos.write(sb.toString().getBytes());*///此写法会导致无法上传
                 dos.writeBytes(PREFIX + BOUNDARY + LINE_END);
-                dos.writeBytes("Content-Disposition: form-data; " + "inputname=\"xxxxxxx\"; filename=\"" + file.getName() + "\"" + LINE_END);
+                dos.writeBytes("Content-Disposition: form-data; " + "name=\"groupcode\"" + LINE_END+LINE_END);
+                dos.writeBytes(VariableDataUtil.groupcode);
+                dos.writeBytes(LINE_END);
+                dos.writeBytes(PREFIX + BOUNDARY + LINE_END);
+                dos.writeBytes("Content-Disposition: form-data; " + "name=\"phone\"" + LINE_END+LINE_END);
+                dos.writeBytes(VariableDataUtil.phone);
+                dos.writeBytes(LINE_END);
+
+                dos.writeBytes(PREFIX + BOUNDARY + LINE_END);
+                dos.writeBytes("Content-Disposition: form-data; " + "name=\"file\"; filename=\"" + file.getName() + "\"" + LINE_END);
                 dos.writeBytes(LINE_END);
 
                 FileInputStream is = new FileInputStream(file);
@@ -256,6 +271,7 @@ public class UploadUtil {
                     }
                     result = sbs.toString();
                     Log.i(TAG, "result------------------>>" + result);
+                    Toast.makeText(getContext(), "完成", Toast.LENGTH_SHORT).show();
                 }
             }
         } catch (IOException e) {

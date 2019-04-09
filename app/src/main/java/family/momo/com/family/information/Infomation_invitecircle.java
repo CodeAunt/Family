@@ -82,9 +82,7 @@ public class Infomation_invitecircle extends AppCompatActivity {
     }
     //获取群组信息
     public void getGroups(){
-        groupNames.add("宋慧宇的小屋");
-        groupNames.add("Family");
-        groupNames.add("大家庭");
+        groupNames.add(VariableDataUtil.groupname);
     }
     //显示群组信息
     public void shouGroups(){

@@ -11,8 +11,6 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.database.sqlite.SQLiteDatabase;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.Point;
 import android.graphics.Typeface;
@@ -20,7 +18,6 @@ import android.location.LocationManager;
 import android.net.Uri;
 import android.os.Handler;
 import android.os.Message;
-import android.os.SystemClock;
 import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -54,7 +51,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
-import com.alibaba.fastjson.JSON;
 import com.baidu.location.BDAbstractLocationListener;
 import com.baidu.location.BDLocation;
 import com.baidu.location.LocationClient;
@@ -66,7 +62,6 @@ import com.baidu.mapapi.map.BitmapDescriptorFactory;
 import com.baidu.mapapi.map.MapStatus;
 import com.baidu.mapapi.map.MapStatusUpdate;
 import com.baidu.mapapi.map.MapStatusUpdateFactory;
-import com.baidu.mapapi.map.MapView;
 import com.baidu.mapapi.map.MarkerOptions;
 import com.baidu.mapapi.map.OverlayOptions;
 import com.baidu.mapapi.map.TextureMapView;
@@ -78,8 +73,6 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.IOException;
-import java.io.InputStream;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -104,8 +97,6 @@ import family.momo.com.family.information.Infomation_joincircle;
 import family.momo.com.family.information.Infomation_mycircle;
 import family.momo.com.family.information.Infomation_newcircle;
 import family.momo.com.family.information.Infomation_sharecircle_share;
-import family.momo.com.family.login.Login4;
-import family.momo.com.family.login.Login5;
 import family.momo.com.family.util.CircleImageView;
 import family.momo.com.family.util.VariableDataUtil;
 import family.momo.com.family.util.sendPostUtil;
@@ -126,10 +117,15 @@ public class MainActivity extends AppCompatActivity {
     private String jsonUp, jsonDown;
     private String albumAddress;
 
-    //地图
+    /*********************************************************1*/
+    private Random ra =new Random();
+    /**********************************************************/
+
+
+    //地图116.403694,39.915599
     //白框
-    private double mLongitude;
-    private double mLatitude;
+    private double mLongitude = 116.403694;
+    private double mLatitude = 39.915599;
     private TextureMapView mMap;
     private RecyclerView mLocationBar;
     private FloatingActionButton mBtnLocation;
@@ -446,7 +442,7 @@ public class MainActivity extends AppCompatActivity {
 
         //侧滑
         drawer.setDrawerListener(new Gest());
-        setDrawerLeftEdgeSize(this, drawer,0.7f);
+        setDrawerLeftEdgeSize(this, drawer,0.5f);
 
     }
     //获取
@@ -454,7 +450,7 @@ public class MainActivity extends AppCompatActivity {
         names.clear();
         msgs.clear();
         names.add(VariableDataUtil.groupname);
-        msgs.add("宋慧宇最棒");
+        msgs.add(" ");
 //        names.add("小明");
 //        msgs.add("聊天信息");
 //        names.add("小红");
@@ -703,51 +699,23 @@ public class MainActivity extends AppCompatActivity {
     //初始化照片
     protected void initPhotos(){
         //todo connet to server and get the photos...
-//        try{
-//
-//        }
-//        catch (){
-//
-//        }
-        mAdapter = new HomeAdapter();
-        mPhotos = new ArrayList<String>();
-        albumAddress = "http://missmo.oicp.io/images/";
+
         mMainPhoto = findViewById(R.id.id_photo_main);
+        mPhotos = new ArrayList<String>();
 
-
-//        try {
-//            fileNames =this.getAssets().list("preview/");
-//            if(fileNames.length<=0) return;
-//            mMainPhoto = findViewById(R.id.id_photo_main);
-//            Random ra =new Random();
-//            InputStream is = getAssets().open("preview/"+fileNames[ra.nextInt(fileNames.length-1)]);//mPhotos.get(position)
-//            Bitmap bitmap = BitmapFactory.decodeStream(is);
-//            int w = bitmap.getWidth();//get widthint
-//            int h = bitmap.getHeight();//get height
-//            int aspRat = h/w;
-//            bitmap = Bitmap.createScaledBitmap(bitmap, w/10, h/10, false);
-//            mMainPhoto.setImageBitmap(bitmap);
-//        } catch(IOException e){
-//            e.printStackTrace();
-//        }
-
-        mPhotos.add("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1554575647376&di=652f71607147268186a1277534ba3389&imgtype=0&src=http%3A%2F%2Fimg.hanyouwang.com%2F2016%2F0727%2F1469590484402184.jpg");
-        mPhotos.add("https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=2421291562,4243392474&fm=26&gp=0.jpg");
-        mPhotos.add("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1555170436&di=a8aac80e4fede5ad3e8049c5c6c05ef6&imgtype=jpg&er=1&src=http%3A%2F%2Fwww.fsfl.gov.cn%2Fzwgk_1028934%2Fywdd%2Fesb%2F201806%2FW020180621616804174336.jpg");
-//        mPhotos.add("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1555170731&di=a84849556595b15be78d0c5672f58430&imgtype=jpg&er=1&src=http%3A%2F%2Fimg0.pcauto.com.cn%2Fpcauto%2F1606%2F12%2F8304663_7_thumb.jpg");
-        mPhotos.add("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1554576119182&di=81ecb2d87490e2f00a9bdc7c56e74679&imgtype=0&src=http%3A%2F%2Fi5.hexunimg.cn%2F2013-07-10%2F155988523.jpg");
-
-        mPhotos.add("https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=2746132109,1984684096&fm=26&gp=0.jpg");
-        mPhotos.add("https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2804163780,368434744&fm=26&gp=0.jpg");
-        mPhotos.add("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1555171797&di=f0b71b4f25545e356600e51e484ea88d&imgtype=jpg&er=1&src=http%3A%2F%2Fmmbiz.qpic.cn%2Fmmbiz_jpg%2FnyLy94YslNJgUQLFtDBPS3LGAibZw2eHAZpuPwyMMzcBWCsUzwyHUX9s1TmQozTT7HnUlUVBPN6KiaXc9icE67tFw%2F640%3Fwx_fmt%3Djpeg");
-        mPhotos.add("https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2378400466,2541887875&fm=26&gp=0.jpg");
-        mPhotos.add("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1554577265686&di=86f5df2a683e77399287b07ce77a4184&imgtype=0&src=http%3A%2F%2Fs16.sinaimg.cn%2Fbmiddle%2F540777a7ga65fc30fc5af%26690");
-        mPhotos.add("https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=116558687,3896810209&fm=26&gp=0.jpg");
-        mPhotos.add("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1554576078505&di=466092630d9cd34c0b97c9f5adb99274&imgtype=0&src=http%3A%2F%2Fd.ifengimg.com%2Fw600_h380%2Fy1.ifengimg.com%2Fa%2F2015_52%2F60a33106973370d.jpg");
-//        mPhotos.add("");
-//        mPhotos.add("");
-//        mPhotos.add("");
-//        mPhotos.add("");
+//        mPhotos.add("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1554575647376&di=652f71607147268186a1277534ba3389&imgtype=0&src=http%3A%2F%2Fimg.hanyouwang.com%2F2016%2F0727%2F1469590484402184.jpg");
+//        mPhotos.add("https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=2421291562,4243392474&fm=26&gp=0.jpg");
+//        mPhotos.add("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1555170436&di=a8aac80e4fede5ad3e8049c5c6c05ef6&imgtype=jpg&er=1&src=http%3A%2F%2Fwww.fsfl.gov.cn%2Fzwgk_1028934%2Fywdd%2Fesb%2F201806%2FW020180621616804174336.jpg");
+////        mPhotos.add("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1555170731&di=a84849556595b15be78d0c5672f58430&imgtype=jpg&er=1&src=http%3A%2F%2Fimg0.pcauto.com.cn%2Fpcauto%2F1606%2F12%2F8304663_7_thumb.jpg");
+//        mPhotos.add("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1554576119182&di=81ecb2d87490e2f00a9bdc7c56e74679&imgtype=0&src=http%3A%2F%2Fi5.hexunimg.cn%2F2013-07-10%2F155988523.jpg");
+//
+//        mPhotos.add("https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=2746132109,1984684096&fm=26&gp=0.jpg");
+//        mPhotos.add("https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2804163780,368434744&fm=26&gp=0.jpg");
+//        mPhotos.add("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1555171797&di=f0b71b4f25545e356600e51e484ea88d&imgtype=jpg&er=1&src=http%3A%2F%2Fmmbiz.qpic.cn%2Fmmbiz_jpg%2FnyLy94YslNJgUQLFtDBPS3LGAibZw2eHAZpuPwyMMzcBWCsUzwyHUX9s1TmQozTT7HnUlUVBPN6KiaXc9icE67tFw%2F640%3Fwx_fmt%3Djpeg");
+//        mPhotos.add("https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2378400466,2541887875&fm=26&gp=0.jpg");
+//        mPhotos.add("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1554577265686&di=86f5df2a683e77399287b07ce77a4184&imgtype=0&src=http%3A%2F%2Fs16.sinaimg.cn%2Fbmiddle%2F540777a7ga65fc30fc5af%26690");
+//        mPhotos.add("https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=116558687,3896810209&fm=26&gp=0.jpg");
+//        mPhotos.add("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1554576078505&di=466092630d9cd34c0b97c9f5adb99274&imgtype=0&src=http%3A%2F%2Fd.ifengimg.com%2Fw600_h380%2Fy1.ifengimg.com%2Fa%2F2015_52%2F60a33106973370d.jpg");
 
 
         try {
@@ -764,16 +732,30 @@ public class MainActivity extends AppCompatActivity {
             }
         }.start();
 
-
-        Random ra =new Random();
-        Picasso.with(MainActivity.this)
-                .load(mPhotos.get(ra.nextInt(mPhotos.size()-1))).placeholder(R.color.lightBlack)
-                .error(R.drawable.icon_photo_nor)
-                .into(mMainPhoto);
+        /*********************************************2*/
+        //random
+        if(mPhotos.size()>0) {
+            Picasso.with(MainActivity.this)
+                    .load(mPhotos.get(ra.nextInt(mPhotos.size() - 1))).placeholder(R.color.lightBlack)
+                    .error(R.drawable.icon_photo_nor)
+                    .into(mMainPhoto);
+        }
+        mMainPhoto.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(mPhotos.size()>0) {
+                    Picasso.with(MainActivity.this)
+                            .load(mPhotos.get(ra.nextInt(mPhotos.size() - 1))).placeholder(R.color.lightBlack)
+                            .error(R.drawable.icon_photo_nor)
+                            .into(mMainPhoto);
+                }
+            }
+        });
+         /********************************************/
     }
     //上传到相册
     public void postForAlbum(){
-        sendPostUtil.postRequest(VariableDataUtil.requestAdress+"/picture/down",jsonDown ,"utf-8", new sendPostUtil.OnResponseListner() {
+        sendPostUtil.postRequest(VariableDataUtil.requestAddress +"/picture/down",jsonDown ,"utf-8", new sendPostUtil.OnResponseListner() {
             @Override
             public void onSucess(String response) {
                 Message message = new Message();
@@ -800,26 +782,28 @@ public class MainActivity extends AppCompatActivity {
                     JSONArray jsonArray = jsonObject.getJSONArray("result");
                     for (int index = 0; index<jsonArray.length(); index++){
                         JSONObject ImageObject = jsonArray.getJSONObject(index);
-                        mPhotos.add(albumAddress+ImageObject.getString("groupcode")+"/"+ImageObject.getString("url"));
-                        Log.d("Tag", "Picture Address::::: "+ albumAddress+ImageObject.getString("groupcode")+"/"+ImageObject.getString("url"));
+                        mPhotos.add(VariableDataUtil.requestAddress+"/images/"+ImageObject.getString("groupcode")+"/"+ImageObject.getString("url"));
+                        Log.d("Tag", "Picture Address::::: "+ VariableDataUtil.requestAddress+"/images/"+ImageObject.getString("url"));
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
+                }
+                if(mPhotos.size() <= 0){
+//            mRecyclerView.setBackgroundResource(R.drawable.icon_background);
+                    findViewById(R.id.rl_begin).setVisibility(View.VISIBLE);
+                } else{
+                    mAdapter.notifyDataSetChanged();
                 }
             }
         }
     };
 
     public void initRecylerView(){
+        mAdapter = new HomeAdapter();
         mRecyclerView = findViewById(R.id.id_album_recyclerView);
         mRecyclerView.setLayoutManager(new StaggeredGridLayoutManager(3, StaggeredGridLayoutManager.VERTICAL));
         mRecyclerView.setAdapter(mAdapter);
         mRecyclerView.setItemAnimator(new DefaultItemAnimator());
-//        if(fileNames.length <= 0){
-////            mRecyclerView.setBackgroundResource(R.drawable.icon_background);
-//            findViewById(R.id.rl_begin).setVisibility(View.VISIBLE);
-//        }
-//        mRecyclerView.setOutlineAmbientShadowColor(R.color.transBlack);
 
 
         ImageView fab = (ImageView) findViewById(R.id.fab);
@@ -855,7 +839,6 @@ public class MainActivity extends AppCompatActivity {
                     .load(mPhotos.get(position)).placeholder(R.color.lightBlack)
                     .error(R.drawable.icon_photo_nor)
                     .into(holder.mIV);
-
         }
 
         @Override
@@ -969,11 +952,13 @@ public class MainActivity extends AppCompatActivity {
             //以下只列举部分获取经纬度相关（常用）的结果信息
             //更多结果信息获取说明，请参照类参考中BDLocation类中的说明
 
-            //获取纬度信息
             Log.d("Tag", "Location started");
-            mLatitude = location.getLatitude();
-            //获取经度信息
-            mLongitude = location.getLongitude();
+            if(location.getLatitude() != 4.9E-324){
+                //获取纬度信息
+                mLatitude = location.getLatitude();
+                //获取经度信息
+                mLongitude = location.getLongitude();
+            }
             Log.d("Tag", "Location: "+mLatitude+","+mLongitude);
             //获取定位精度，默认值为0.0f
             float radius = location.getRadius();
@@ -985,12 +970,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-
+    /**********************************************************3*/
     public void initLocationinfo(){
         mMap = findViewById(R.id.mv_baidu_map);
         mMap.showZoomControls(false); //hide the zoom button
         mBaiduMap = mMap.getMap();
-
 
         //todo get the online information;
         //接收定位信息
@@ -1008,20 +992,10 @@ public class MainActivity extends AppCompatActivity {
             }
         }.start();
 
-
         mLocationAdapter = new LocationAdapter();
         mLocationList = new ArrayList<LocationInfo>();
         LatLng tmpLocation = new LatLng(mLatitude,mLongitude);
-        LocationInfo tmp = new LocationInfo("杨学均", false, (R.mipmap.user_img1), tmpLocation);
-        mLocationList.add(tmp);
-        tmpLocation = new LatLng(31.237209, 121.476534);
-        tmp = new LocationInfo("小小杨", true, (R.mipmap.user_img2),tmpLocation);
-        mLocationList.add(tmp);
-        tmpLocation = new LatLng(34.753929, 113.628142);
-        tmp = new LocationInfo("杨显伟", false, (R.mipmap.user_img3),tmpLocation);
-        mLocationList.add(tmp);
-        tmpLocation = new LatLng(39.941067,116.444435);
-        tmp = new LocationInfo("林秋妍", true, (R.mipmap.user_img4),tmpLocation);
+        LocationInfo tmp = new LocationInfo(VariableDataUtil.phone, false, (R.mipmap.user_img1), tmpLocation);
         mLocationList.add(tmp);
 
         Log.d("Tag", "Location List size: "+mLocationList.size());
@@ -1039,6 +1013,13 @@ public class MainActivity extends AppCompatActivity {
                 //判断状态，开启定位timer或关闭。
                 if(mLocationList.get(0).infoState){
                     startLocation();
+                    mLocationAdapter.notifyItemChanged(0);
+                    MapStatus mMapStatus = new MapStatus.Builder()
+                            .target(mLocationList.get(0).location)
+                            .zoom(12)
+                            .build();
+                    MapStatusUpdate mMapStatusUpdate = MapStatusUpdateFactory.newMapStatus(mMapStatus);
+                    mBaiduMap.setMapStatus(mMapStatusUpdate);
                 }else{
                     stopLocation();
                 }
@@ -1057,6 +1038,7 @@ public class MainActivity extends AppCompatActivity {
         mBaiduMap.setMapStatus(u);
         //
     }
+    /**********************************************************/
 
     public void startLocation() {
         //更改本地定位数据
@@ -1070,7 +1052,7 @@ public class MainActivity extends AppCompatActivity {
                 public void run() {
                     try {
                         JSONObject jsonObject = new JSONObject();
-                        jsonObject.put("time", System.currentTimeMillis());
+                        jsonObject.put("time", ""+System.currentTimeMillis());
                         jsonObject.put("longitude", mLongitude);
                         jsonObject.put("latitude", mLatitude);
                         jsonObject.put("phone", VariableDataUtil.phone);
@@ -1104,7 +1086,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void postForLocation(){
-        sendPostUtil.postRequest(VariableDataUtil.requestAdress+"/position/down"
+        sendPostUtil.postRequest(VariableDataUtil.requestAddress +"/position/down"
                 ,jsonDown ,"utf-8", new sendPostUtil.OnResponseListner() {
             @Override
             public void onSucess(String response) {
@@ -1123,7 +1105,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void postUpLocation(){
-        sendPostUtil.postRequest(VariableDataUtil.requestAdress+"/position/up"
+        sendPostUtil.postRequest(VariableDataUtil.requestAddress +"/position/up"
                 ,jsonUp ,"utf-8", new sendPostUtil.OnResponseListner() {
                     @Override
                     public void onSucess(String response) {
@@ -1157,9 +1139,13 @@ public class MainActivity extends AppCompatActivity {
                             Float lat = parseFloat(LocationObject.getString("latitude"));
                             Float lng = parseFloat(LocationObject.getString("longitude"));
                             LatLng tmpLocation = new LatLng(lat, lng);
-                            tmp = new LocationInfo(LocationObject.getString("phone")
-                                    , true, (R.mipmap.user_img4), tmpLocation);
-                            mLocationList.add(tmp);
+                            if(LocationObject.getString("phone").equals(VariableDataUtil.phone)){
+                                mLocationList.get(0).location = tmpLocation;
+                            }else {
+                                tmp = new LocationInfo(LocationObject.getString("phone")
+                                        , true, (R.mipmap.user_img4), tmpLocation);
+                                mLocationList.add(tmp);
+                            }
                         }
                     }
                     mLocationAdapter.notifyDataSetChanged();
@@ -1173,7 +1159,7 @@ public class MainActivity extends AppCompatActivity {
     Handler handlerLocation = new Handler(){
         @Override
         public void handleMessage(Message msg){
-            Toast.makeText(MainActivity.this, msg.toString(), Toast.LENGTH_LONG).show();
+//            Toast.makeText(MainActivity.this, msg.toString(), Toast.LENGTH_LONG).show();
         }
     };
 
@@ -1217,7 +1203,7 @@ public class MainActivity extends AppCompatActivity {
 
             // todo: init the icon on the map
             // 生成marker bitmap
-            if(position==mLocationList.size()-1) {
+            if(position==mLocationList.size()-1||position == 0) {
                 mBaiduMap.clear();
                 mMap.getOverlay().clear();
                 mBaiduMap = mMap.getMap();
@@ -1306,7 +1292,7 @@ public class MainActivity extends AppCompatActivity {
     private int GPS_REQUEST_CODE = 1;
     private void openGPSSEtting() {
         if (checkGpsIsOpen()){
-            Toast.makeText(this, "true", Toast.LENGTH_SHORT).show();
+//            Toast.makeText(this, "true", Toast.LENGTH_SHORT).show();
         }else {
             new AlertDialog.Builder(this).setTitle("open GPS")
                     .setMessage("go to open")
@@ -1315,7 +1301,7 @@ public class MainActivity extends AppCompatActivity {
 
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
-                            Toast.makeText(MainActivity.this, "close", Toast.LENGTH_SHORT).show();
+//                            Toast.makeText(MainActivity.this, "close", Toast.LENGTH_SHORT).show();
                             // 关闭dialog
                             dialogInterface.dismiss();
                         }

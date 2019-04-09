@@ -21,9 +21,7 @@ import android.widget.Toast;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import family.momo.com.family.Database.Bean_Chat_Msg;
 import family.momo.com.family.Database.Bean_User_Info;
-import family.momo.com.family.Database.Helper_Chat_Msg;
 import family.momo.com.family.Database.Helper_User_Info;
 import family.momo.com.family.Database.Util;
 import family.momo.com.family.MainActivity;
@@ -133,7 +131,7 @@ public class Login5 extends AppCompatActivity {
     public void post(){
         String encode="utf-8";
 
-        sendPostUtil.postRequest(VariableDataUtil.requestAdress+"/consumer/create", json,encode, new sendPostUtil.OnResponseListner() {
+        sendPostUtil.postRequest(VariableDataUtil.requestAddress +"/consumer/create", json,encode, new sendPostUtil.OnResponseListner() {
             @Override
             public void onSucess(String response) {
                 Message message = new Message();
@@ -152,7 +150,7 @@ public class Login5 extends AppCompatActivity {
     Handler handler = new Handler(){
         @Override
         public void handleMessage(Message msg) {
-            Toast.makeText(Login5.this,msg.toString(),Toast.LENGTH_LONG).show();
+            VariableDataUtil.groupcode = (String) msg.obj;
             if (msg.obj != null){
                 Intent intent = new Intent(Login5.this,MainActivity.class);
                 intent.putExtra("groupname",groupname);

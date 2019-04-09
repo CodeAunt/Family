@@ -26,49 +26,49 @@
     <!-- 媒体权限 -->
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <uses-permission android:name="android.permission.CAMERA" />
-
     hlUs6UzMxTVhapXRPZ1ldDhTff75OZ2E
     <application
+        android:name=".chat.HsiaoTienApplication"
         android:allowBackup="true"
         android:icon="@mipmap/logo"
-        android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
-        android:supportsRtl="true"
-        android:theme="@style/AppTheme"
+        android:label="小圈圈"
         android:networkSecurityConfig="@xml/network_security_config"
-        android:name="family.momo.com.family.chat.HsiaoTienApplication">
+        android:roundIcon="@mipmap/logo"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
         <meta-data
             android:name="com.baidu.lbsapi.API_KEY"
-            android:value="hlUs6UzMxTVhapXRPZ1ldDhTff75OZ2E">
-        </meta-data>
+            android:value="hlUs6UzMxTVhapXRPZ1ldDhTff75OZ2E"></meta-data>
 
         <service
             android:name="com.baidu.location.f"
             android:enabled="true"
             android:process=":remote" />
+
         <activity
             android:name=".MainActivity"
             android:screenOrientation="portrait">
-           <intent-filter>
-
-               <action android:name="android.intent.action.SEND" />
-           </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.SEND" />
+            </intent-filter>
         </activity>
         <activity
             android:name="album.AlbumActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
-            <!--<intent-filter>-->
-                <!--<action android:name="android.intent.action.MAIN" />-->
 
-                <!--<category android:name="android.intent.category.LAUNCHER" />-->
-            <!--</intent-filter>-->
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
+
+
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
         </activity>
         <activity android:name=".album.SelectPhotoActivity" />
         <activity
             android:name=".chat.Chat_msg"
-            android:windowSoftInputMode="adjustResize"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name="com.mob.tools.MobUIShell"
             android:configChanges="keyboardHidden|orientation|screenSize"
@@ -80,7 +80,7 @@
             android:enabled="true"
             android:exported="true" />
 
-        <activity android:name=".login.Login" >
+        <activity android:name=".login.Login">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -103,10 +103,13 @@
         <activity android:name=".information.Infomation_fedback" />
         <activity android:name=".information.Infomation_sharecircle_share" />
         <activity android:name=".chat.Chat_msg_members" />
-        <activity android:name=".chat.Chat_msg_members_users"/>
-
-        <activity android:name=".chat.ChannelActivity"/>
-        <activity android:name=".chat.PartyRoomActivity"/>
+        <activity android:name=".chat.Chat_msg_members_users" />
+        <activity android:name=".chat.ChannelActivity" />
+        <activity android:name=".chat.PartyRoomActivity" />
+        <activity
+            android:name=".album.ZoomImageActivity"
+            android:label="@string/title_activity_zoom_image"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

@@ -20,6 +20,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 import com.squareup.picasso.Picasso;
@@ -32,6 +33,7 @@ import java.util.TreeSet;
 import family.momo.com.family.R;
 import family.momo.com.family.util.ImageItem;
 import family.momo.com.family.util.UploadUtil;
+import family.momo.com.family.util.VariableDataUtil;
 
 public class SelectPhotoActivity extends FragmentActivity {
 
@@ -77,6 +79,7 @@ public class SelectPhotoActivity extends FragmentActivity {
     }
 
     protected void initPhotos() {
+        pickedList = new ArrayList<String>();
         mDirAdapter = new SelectDirAdapter();
         mAdapter = new SelectIVAdapter();
 
@@ -221,18 +224,23 @@ public class SelectPhotoActivity extends FragmentActivity {
                 new Thread(new Runnable() {
                     @Override
                     public void run() {
-
-                        String uploadurl = "http://missmo.oicp.io/api/uppicture";//SharedPreferencesUtil.getServerUrls(getActivity()) + "mobileqrcode/uploadsignimg.html";
+                        String uploadurl = VariableDataUtil.requestAddress+"/picture/upload";
                         try {
-                            Log.d("Tag", "Start Upload:"+ pickedList.get(0));
-                            File file = new File(pickedList.get(0));
-                            String result = UploadUtil.uploadImage(file, uploadurl);
-                            Log.d("Tag", "Uploaded:"+ pickedList.get(0)+""+result);
+                            for(int index = 0; index<pickedList.size();index++) {
+                                Log.d("Tag", "Start Upload:" + pickedList.get(index));
+                                File file = new File(pickedList.get(index));
+                                String result = UploadUtil.uploadImage(file, uploadurl);
+                                Log.d("Tag", "Uploaded:" + pickedList.get(index) + "" + result);
+                            }
+                            Toast.makeText(SelectPhotoActivity.this, "请稍候", Toast.LENGTH_SHORT).show();
+//                            pickedList.clear();
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
                     }
                 }).start();
+//                initPhotos();
+                finish();
             }
         });
     }

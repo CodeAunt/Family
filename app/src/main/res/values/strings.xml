@@ -17,5 +17,8 @@
 
 
     <string name="agora_app_id">7fb791bf0d4c471285f5c9a94f8009a2</string>
+    <string name="title_activity_zoom_image">ZoomImageActivity</string>
+    <string name="action_settings">Settings</string>
+    <string name="section_format">Hello World from section: %1$d</string>
 
 </resources>

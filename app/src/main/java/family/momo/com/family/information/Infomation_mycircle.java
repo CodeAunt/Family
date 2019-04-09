@@ -63,9 +63,9 @@ public class Infomation_mycircle extends AppCompatActivity {
     }
     //获取群组信息
     public void getGroups(){
-        groupNames.add("宋慧宇的小屋");
-        groupNames.add("Family");
-        groupNames.add("大家庭");
+        groupNames.add(VariableDataUtil.groupname);
+//        groupNames.add("Family");
+//        groupNames.add("大家庭");
     }
     //显示群组信息
     public void shouGroups(){

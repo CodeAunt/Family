@@ -1,31 +1,22 @@
 package family.momo.com.family.information;
 
-import android.content.ContentValues;
 import android.content.Intent;
-import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.Display;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import family.momo.com.family.Database.Bean_User_Info;
-import family.momo.com.family.Database.Helper_User_Info;
-import family.momo.com.family.Database.Util;
 import family.momo.com.family.DefinedViews.Dialog_self;
 import family.momo.com.family.DefinedViews.VerificationCodeInput;
 import family.momo.com.family.MainActivity;
 import family.momo.com.family.R;
-import family.momo.com.family.login.Login4;
 import family.momo.com.family.util.VariableDataUtil;
 import family.momo.com.family.util.sendPostUtil;
 
@@ -102,7 +93,7 @@ public class Infomation_joincircle extends AppCompatActivity {
 
     private void post(String json){
 
-        sendPostUtil.postRequest(VariableDataUtil.requestAdress+"/consumer/join",json,"utf-8", new sendPostUtil.OnResponseListner() {
+        sendPostUtil.postRequest(VariableDataUtil.requestAddress +"/consumer/join",json,"utf-8", new sendPostUtil.OnResponseListner() {
             @Override
             public void onSucess(String response) {
                 Message message = new Message();

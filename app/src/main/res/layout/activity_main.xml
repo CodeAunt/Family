@@ -11,7 +11,7 @@
         android:background="#0bb399"
         android:orientation="vertical"
         android:id="@+id/mainactivity_layout_left"
-        android:layout_width="320dp"
+        android:layout_width="280dp"
         android:layout_height="match_parent"
         >
 
